@@ -7,8 +7,8 @@ var User = require('./models/user.model')
 var jwt = require('jsonwebtoken');
 const Allcourse = require('./models/usercourse.model');
 
-
 var app = express()
+
 app.use(cors());
 app.use(express.static(__dirname+"/public"))
 app.use(express.urlencoded({ extended: false }));
@@ -26,14 +26,14 @@ const authenticate = async (req, res, next) => {
     const decoded = jwt.verify(token, 'secretkey');
     const user = await User.findById(decoded._doc._id);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.json({ message: 'User not found' });
     }
     req.user = user;
 
     next(); 
   } 
   catch (error) {
-    res.status(401).json({ message: 'Invalid or expired token' });
+    res.json({ message: 'Invalid or expired token' });
   }
 };
 
@@ -44,7 +44,7 @@ app.get("/",(req,res)=>{
     db.then(()=>{
         Course.find({})
         .then((coursesdata)=>{
-          console.log("cdata",coursesdata)
+          // console.log("cdata",coursesdata)
           var userdetails = ""
           res.send(coursesdata)
         })
