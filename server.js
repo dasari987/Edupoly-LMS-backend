@@ -14,7 +14,7 @@ app.use(express.static(__dirname+"/public"))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-var db = mongoose.connect("mongodb+srv://sai:sai123456789@atlascluster.ym1yuin.mongodb.net/project?retryWrites=true&w=majority&appName=AtlasCluster")
+var db = mongoose.connect("mongodb+srv://sai:sai987654321@atlascluster.ym1yuin.mongodb.net/project?retryWrites=true&w=majority&appName=AtlasCluster")
 
 
 const authenticate = async (req, res, next) => {
